@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
+  <bpmn:process id="offset-date-time" name="offset-date-time" isExecutable="true">
+    <bpmn:startEvent id="StartEventProcessStarted" name="Process&#10;started">
+      <bpmn:outgoing>SequenceFlow1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEventProcessEnded" name="Process&#10;ended">
+      <bpmn:incoming>SequenceFlow_0eylc6l</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow1" sourceRef="StartEventProcessStarted" targetRef="Task_SimpleForm" />
+    <bpmn:sequenceFlow id="SequenceFlow_1013qli" sourceRef="Task_SimpleForm" targetRef="Task_ParseOffsetDatTime" />
+    <bpmn:sequenceFlow id="SequenceFlow_0eylc6l" sourceRef="Task_ParseOffsetDatTime" targetRef="EndEventProcessEnded" />
+    <bpmn:serviceTask id="Task_ParseOffsetDatTime" name="parse OffsetDateTime" camunda:delegateExpression="${parseOffsetDateTime}">
+      <bpmn:incoming>SequenceFlow_1013qli</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0eylc6l</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Task_SimpleForm" name="simple form" camunda:assignee="${delegateId}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="form" label="form" type="json" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1013qli</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="offset-date-time">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEventProcessStarted">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0fkea3f_di" bpmnElement="EndEventProcessEnded">
+        <dc:Bounds x="556" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="609" y="106" width="41" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_08va5r8_di" bpmnElement="SequenceFlow1">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="260" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="337.5" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1013qli_di" bpmnElement="SequenceFlow_1013qli">
+        <di:waypoint x="360" y="120" />
+        <di:waypoint x="420" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0eylc6l_di" bpmnElement="SequenceFlow_0eylc6l">
+        <di:waypoint x="520" y="120" />
+        <di:waypoint x="556" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0dfc2dp_di" bpmnElement="Task_ParseOffsetDatTime">
+        <dc:Bounds x="420" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0hyey2m_di" bpmnElement="Task_SimpleForm">
+        <dc:Bounds x="260" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

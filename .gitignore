@@ -1,0 +1,45 @@
+tmp/
+
+# LOCAL CONFIG OVERRIDES
+LOCAL.*.properties
+
+# BUILD SYSTEMS
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+.gradle
+release.properties
+bin/
+*.class
+
+# PACKAGES
+*.jar
+*.war
+*.ear
+
+# IDES
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.target
+.metadata
+.loadpath
+.buildpath
+.cproject
+*.pydevproject
+.externalToolBuilders/
+*.launch
+.texlipse
+
+# EDITORS
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# JVM CRASH LOGS
+hs_err_pid*
